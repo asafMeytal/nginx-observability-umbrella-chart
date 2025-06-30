@@ -10,7 +10,6 @@
 .hg/
 .hgignore
 .svn/
-charts/
 # Common backup files
 *.swp
 *.bak
