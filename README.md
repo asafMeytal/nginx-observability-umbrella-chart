@@ -18,7 +18,7 @@ An umbrella charts that installs a nginx web server + Prometheus & Grafana for s
   helm dependency build
   ```
 
-3. Install the helm chart:
+3. Install the helm chart:<br>
 `helm install observability-umbrella . -n <namespace> --create-namespace`
 
 ## View Grafana Nginx Dashboard
