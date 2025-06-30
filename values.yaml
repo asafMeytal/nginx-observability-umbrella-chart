@@ -8,7 +8,7 @@ nginx:
   # Enable metrics expose.
   metrics:
     enabled: true
-    # Enable Prometheus service monitor to scrape metrics.
+    # Enable Prometheus serviceMonitor CR to scrape metrics.
     serviceMonitor:
       enabled: true
   # Change service type to ClusterIP for only internal access.
