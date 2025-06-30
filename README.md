@@ -27,7 +27,7 @@ An umbrella charts that installs a nginx web server + Prometheus & Grafana for s
 To view the Grafana Dashboard of the Nginx service you should port-forward the traffic of the grafana service, and navigate locally:
 
 1. Port-forward with:
-`kubectl port-forward svc/observability-umbrella-grafana 3000:80`
+`kubectl port-forward svc/observability-umbrella-grafana -n <namespace> 3000:80`
 2. Navigate to:
     http://localhost:3000/
  
