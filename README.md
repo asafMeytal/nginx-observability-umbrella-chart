@@ -10,7 +10,7 @@ An umbrella charts that installs a nginx web server + Prometheus & Grafana for s
 
 ## Installation:
 
- 1. Clone the repo using:
+ 1. Clone the repo using:<br>
  `git clone https://github.com/asafMeytal/nginx-observability-umbrella-chart.git`
  2. Navigate to the folder and install the dependencies charts using:
    ```
