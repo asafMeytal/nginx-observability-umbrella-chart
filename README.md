@@ -12,9 +12,11 @@ An umbrella charts that installs a nginx web server + Prometheus & Grafana for s
 
  1. Clone the repo using:<br>
  `git clone https://github.com/asafMeytal/nginx-observability-umbrella-chart.git`
- 2. Navigate to the folder and install the dependencies charts using:
+ 2. Navigate to the folder, add the dependencies repos and build them using:
    ```
   cd nginx-observability-umbrella-chart
+  helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+  helm repo add bitnami https://charts.bitnami.com/bitnami
   helm dependency build
   ```
 
