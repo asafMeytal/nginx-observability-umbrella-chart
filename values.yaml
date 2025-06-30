@@ -1,0 +1,48 @@
+# Default values for nginx-observability-umbrella-chart.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+nginx:
+  # We will set the replicaCount to 3 to ensure high availability.
+  replicaCount: 3
+  # Enable metrics expose.
+  metrics:
+    enabled: true
+    # Enable Prometheus service monitor to scrape metrics.
+    serviceMonitor:
+      enabled: true
+  # Change service type to ClusterIP for only internal access.
+  service:
+    type: ClusterIP
+  # We will use PodDisruptionBudget to ensure that at least one pod is always available.
+  pdb:
+    create: true
+    minAvailable: 1
+  # We will add HPA autoscaling to ensure that the NGINX pods can scale based on CPU utilization.
+  autoscaling:
+    enabled: true
+    minReplicas: 3
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 80
+  # We will set the affinity to ensure that NGINX pods are not scheduled on the same node for high availability. 
+  affinity:
+    podAntiAffinity:
+      # In Prod env, should be changed to "requiredDuringSchedulingIgnoredDuringExecution"!
+      preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+                - key: app.kubernetes.io/name
+                  operator: In
+                  values:
+                    - nginx
+            topologyKey: "kubernetes.io/hostname"
+
+kube-prometheus-stack:
+  prometheus:
+    prometheusSpec:
+      # Allow Prometheus to discover all service monitors in the cluster, regardless of their Helm labels.
+      serviceMonitorSelectorNilUsesHelmValues: false
+  grafana:
+    adminPassword: admin

@@ -1,0 +1,9 @@
+dependencies:
+- name: nginx
+  repository: oci://registry-1.docker.io/bitnamicharts
+  version: 21.0.1
+- name: kube-prometheus-stack
+  repository: https://prometheus-community.github.io/helm-charts
+  version: 75.6.1
+digest: sha256:b907cc2606aa96462f91e5d0f2d0c83a1d971d583fe4dc87fcf1bda6f290a8b7
+generated: "2025-06-30T09:47:25.413219+03:00"
